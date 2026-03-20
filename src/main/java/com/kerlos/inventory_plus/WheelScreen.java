@@ -1,13 +1,11 @@
 package com.kerlos.inventory_plus;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 public class WheelScreen extends Screen {
 
@@ -50,13 +48,13 @@ public class WheelScreen extends Screen {
         this.addDrawableChild(ButtonWidget.builder(
                 Text.of("Save"),
                 btn -> hotbarManager.saveCurrentPage()
-        ).dimensions(cx - 60, cy + 130, 50, 20).build());
+        ).dimensions(cx-25, cy -20, 50, 20).build());
 
         // Bouton Charger
         this.addDrawableChild(ButtonWidget.builder(
                 Text.of("Load"),
                 btn -> hotbarManager.loadPage(hotbarManager.getSelectedPage())
-        ).dimensions(cx + 10, cy + 130, 50, 20).build());
+        ).dimensions(cx-25, cy, 50, 20).build());
 
         // Bouton Retour
         this.addDrawableChild(ButtonWidget.builder(
@@ -109,12 +107,12 @@ public class WheelScreen extends Screen {
         int size = 20;
         int spacing = 20;
         int startX = centerX - (hotbar.length * spacing) / 2;
-        int y = centerY + WHEEL_SIZE / 2 + 10;
+        int y = centerY + WHEEL_SIZE / 2;
 
-        ctx.fill(startX, y, startX + hotbar.length * spacing, y+size, 0x80FFFFFF);
+        ctx.fill(startX, y, startX + hotbar.length * spacing, y+size, 0x80000000);
 
         for (int i = 0; i < hotbar.length; i++) {
-            drawItem(ctx, startX + i*spacing, y, hotbar[i]);
+            drawItem(ctx, startX + i*spacing, y+2, hotbar[i]);
         }
     }
 
