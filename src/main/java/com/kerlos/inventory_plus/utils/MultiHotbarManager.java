@@ -1,15 +1,17 @@
-package com.kerlos.inventory_plus;
+package com.kerlos.inventory_plus.utils;
+
+import net.minecraft.client.MinecraftClient;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.kerlos.inventory_plus.InventoryPlus.mc;
 
 public class MultiHotbarManager {
 
     public final List<HotbarPage> pages = new ArrayList<>();
     private int currentPage = 0;    // page actuellement chargée dans l’inventaire
     private int selectedPage = 0;   // page choisie sur la roue
+
+    public static MinecraftClient mc = MinecraftClient.getInstance();
 
     public MultiHotbarManager(int numPages) {
         for (int i = 0; i < numPages; i++) {

@@ -1,5 +1,7 @@
 package com.kerlos.inventory_plus;
 
+import com.kerlos.inventory_plus.utils.HotbarPage;
+import com.kerlos.inventory_plus.utils.MultiHotbarManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -14,7 +16,7 @@ public class WheelScreen extends Screen {
     private static final int RADIUS = 60;
     private static final int WHEEL_SIZE = 180;
 
-    private final MultiHotbarManager hotbarManager = InventoryPlus.HOTBAR_MANAGER;
+    private final MultiHotbarManager hotbarManager = InventoryPlusClient.HOTBAR_MANAGER;
 
     public WheelScreen(Text title) {
         super(title);
@@ -92,7 +94,7 @@ public class WheelScreen extends Screen {
             else if (i == hotbarManager.getSelectedPage()) color = 0xFFFFFF00; // jaune = sélectionnée
             else color = 0xAAFF0000; // rouge normal
 
-            graphics.fill(x-18, y-18, x+18, y+18, color);
+            graphics.fill(x-16, y-16, x+16, y+16, color);
         }
 
         // Preview de la page sélectionnée en dessous de la roue
@@ -119,19 +121,6 @@ public class WheelScreen extends Screen {
     private void drawItem(DrawContext ctx, int x, int y, ItemStack stack) {
         if (stack == null || stack.isEmpty()) return;
         ctx.drawItem(stack, x, y);
-
-        String text = String.valueOf(stack.getCount());
-        int textWidth = mc.textRenderer.getWidth(text);
-
-        if (stack.getCount() > 1)
-            ctx.drawText(
-                    mc.textRenderer,
-                    text,
-                    x + 9 - textWidth / 2,
-                    y + 10,
-                    0xFFFFFFFF,
-                    true
-            );
     }
 
     @Override

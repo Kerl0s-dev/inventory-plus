@@ -3,7 +3,7 @@
 	"id": "inventory-plus",
 	"version": "${version}",
 	"name": "Inventory Plus",
-	"description": "Inventory Plus reworks the way the inventory works by adding the",
+	"description": "Inventory Plus reworks the way the inventory works by adding a multi-hotbar wheel manager",
 	"authors": [
 		"Kerl0s"
 	],
@@ -16,7 +16,7 @@
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"com.kerlos.inventory_plus.InventoryPlus"
+			"com.kerlos.inventory_plus.InventoryPlusClient"
 		]
 	},
 	"mixins": [
